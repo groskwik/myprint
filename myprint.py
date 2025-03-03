@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-#!/usr/bin/env python
 import os
 import subprocess
 import time
@@ -33,9 +32,6 @@ PRINT_SETTINGS = {
     ],
     "brother innov-is xp3 embrodery": [
         "color,1,212,duplex,fit,paper=letter",
-    ],
-    "brother innov-is xp3 sewing": [
-        "color,1,216,duplex,fit,paper=letter",
     ],
     "humminbird helix 5": [
         "color,1-190,duplex,fit,paper=letter",
@@ -106,20 +102,22 @@ def print_pdf(printer_name, partial_name):
         new_print_settings = []
         for setting in print_settings:
             setting_parts = setting.split(",")
-            new_setting = []
+            modified_setting = []
             replaced = False
             
             for part in setting_parts:
-                if "-" in part and all(p.isdigit() for p in part.split("-")):
-                    new_setting.append(custom_range)
+                if "-" in part and part.replace("-", "").isdigit():
+                    modified_setting.append(custom_range)
                     replaced = True
+                elif part.isdigit():
+                    continue  # Remove existing standalone numbers (fixes extra number issue)
                 else:
-                    new_setting.append(part)
+                    modified_setting.append(part)
             
             if not replaced:
-                new_setting.insert(1, custom_range)  # Insert page range after color mode
+                modified_setting.insert(1, custom_range)  # Ensure correct placement of page range
             
-            new_print_settings.append(",".join(new_setting))
+            new_print_settings.append(",".join(modified_setting))
         print_settings = new_print_settings
     
     print(f"Printing: {pdf_file} on {printer_name}...")
@@ -134,4 +132,3 @@ if __name__ == "__main__":
     selected_printer = select_printer()
     file_name = input("Enter part of the PDF filename: ").strip()
     print_pdf(selected_printer, file_name)
-
