@@ -28,14 +28,24 @@ PRINT_SETTINGS = {
         "monochrome,3-34,duplex,fit,paper=letter",
         "color,102,simplex,fit,paper=letter",
     ],
+    "otari mtr-10 series": [
+        "monochrome,1-180,duplex,fit,paper=letter",
+        "color,181,188,duplex,fit,paper=letter",
+        "monochrome,189-290,duplex,fit,paper=letter",
+    ],
+    "singer 2263": [
+        "color,1,simplex,fit,paper=letter",
+        "monochrome,2,duplex,fit,paper=letter",
+        "monochrome,3-62,duplex,fit,paper=letter",
+    ],
     "bernette b05": [
-        "color,1,82,duplex,fit,paper=letter",
+        "color,1-82,duplex,fit,paper=letter",
     ],
     "canon sx530 hs": [
-        "color,1,169,duplexshort,fit,paper=letter,landscape",
+        "color,1-169,duplexshort,fit,paper=letter,landscape",
     ],
     "brother innov-is xp3 embroidery": [
-        "color,1,212,duplex,fit,paper=letter",
+        "color,1-212,duplex,fit,paper=letter",
     ],
     "humminbird helix 5": [
         "color,1-190,duplex,fit,paper=letter",
@@ -45,20 +55,61 @@ PRINT_SETTINGS = {
     "leica q3 43": [
         "color,1-264,duplex,fit,paper=letter",
     ],
-    "nikon d3500": [
-        "monochrome,1-36,duplex,fit,paper=letter",
+    "canon eos m50 mark ii": [
+        "color,1-709,duplex,fit,paper=letter",
     ],
     "bernina 570qe": [
         "color,1-214,duplex,fit,paper=letter",
     ],
-    "canon eos m50 mark ii": [
-        "color,609-709,duplex,fit,paper=letter",
+    "hp16c-oh-en_mod": [
+        "color,1-140,duplex,fit,paper=letter",
     ],
-    "hp42s-elec-en_mod": [
+    "hp15c-oh-en": [
+        "color,1-300,duplex,fit,paper=letter",
+    ],
+    "hp42s-elec-en": [
         "monochrome,3-164,duplex,fit,paper=letter",
     ],
+    "hp42s-elec-en_mod": [
+        "color,1,simplex,fit,paper=letter",
+        "monochrome,3-164,duplex,fit,paper=letter",
+    ],
+    "gopro hero 9 black camera_mod": [
+        "color,3-145,duplex,fit,paper=letter",
+    ],
+    "hp42s-easycourse": [
+        "monochrome,3-388,duplex,fit,paper=letter",
+    ],
+    "hp42s-easycourse_mod": [
+        "color,1,simplex,fit,paper=letter",
+        "monochrome,3-388,duplex,fit,paper=letter",
+    ],
+    "nikon d3500": [
+        "monochrome,1-36,duplex,fit,paper=letter",
+    ],
+    "nikon d3300": [
+        "monochrome,1-144,duplex,fit,paper=letter",
+    ],
+    "nikon d6": [
+        "monochrome,1-316,duplex,fit,paper=letter",
+    ],
+    "hp71-rpn": [
+        "monochrome,1-12,duplex,fit,paper=letter",
+    ],
+    "canon eos 6d": [
+        "color,1-404,duplex,fit,paper=letter",
+    ],
+    "dm42": [
+        "color,2-29,duplex,fit,paper=letter",
+    ],
+    "dm41x_user_manual": [
+        "color,3-44,duplex,fit,paper=letter",
+    ],
+    "brother ce8080 ce8080prw_mod": [
+        "color,1-72,duplex,fit,paper=letter",
+    ],
     "othermanual": [
-        "color,duplex,fit,paper=letter"
+        "monochrome,1-5,simplex,fit,paper=letter"
     ]
 }
 
@@ -116,9 +167,9 @@ def print_pdf(printer_name, partial_name):
     # Display the number of pages in the selected PDF
     page_count = get_pdf_page_count(pdf_path)
     if page_count:
-        print(f"The selected PDF has {page_count} pages.")
+        print(f"The document '{os.path.basename(pdf_path)}' has {page_count} pages.")
     else:
-        print("Unable to determine the number of pages in the PDF.")
+        print("Unable to determine the number of pages.")
 
     file_name_without_ext = os.path.splitext(os.path.basename(pdf_path))[0].lower()
     
@@ -140,7 +191,7 @@ def print_pdf(printer_name, partial_name):
                     modified_setting.append(custom_range)
                     replaced = True
                 elif part.isdigit():
-                    continue  # Remove existing standalone numbers (fixes extra number issue)
+                    continue  # Remove existing standalone numbers
                 else:
                     modified_setting.append(part)
             
@@ -149,17 +200,45 @@ def print_pdf(printer_name, partial_name):
             
             new_print_settings.append(",".join(modified_setting))
         print_settings = new_print_settings
-    
+
     print(f"Printing: {os.path.basename(pdf_path)} on {printer_name}...")
 
+    batch_size = 70  # Number of pages per batch
+    delay_between_batches = 180  # Delay in seconds between batches
+
     for setting in print_settings:
-        print(f"Applying print settings: {setting}")
-        subprocess.run([SUMATRA_PATH, "-print-to", printer_name, "-print-settings", setting, pdf_path], check=True)
-    
+        # Extract page range from the setting
+        setting_parts = setting.split(",")
+        page_range = None
+        for part in setting_parts:
+            if "-" in part and part.replace("-", "").isdigit():
+                page_range = part
+                break
+
+        if page_range:
+            start_page, end_page = map(int, page_range.split("-"))
+            current_page = start_page
+
+            while current_page <= end_page:
+                batch_end = min(current_page + batch_size - 1, end_page)
+                batch_range = f"{current_page}-{batch_end}"
+                batch_setting = setting.replace(page_range, batch_range)
+
+                print(f"Printing pages {batch_range} with settings: {batch_setting}")
+                subprocess.run([SUMATRA_PATH, "-print-to", printer_name, "-print-settings", batch_setting, pdf_path], check=True)
+
+                current_page += batch_size
+                if current_page <= end_page:
+                    print(f"Waiting for {delay_between_batches // 60} minutes before next batch...")
+                    time.sleep(delay_between_batches)
+        else:
+            # Print normally if no page range is specified
+            print(f"Applying print settings: {setting}")
+            subprocess.run([SUMATRA_PATH, "-print-to", printer_name, "-print-settings", setting, pdf_path], check=True)
+
     print("Printing completed!")
 
 if __name__ == "__main__":
     selected_printer = select_printer()
     file_name = input("Enter part of the PDF filename: ").strip()
     print_pdf(selected_printer, file_name)
-
