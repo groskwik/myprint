@@ -2,12 +2,16 @@
 import os
 import subprocess
 import time
+from PyPDF2 import PdfReader
 
 # Path to SumatraPDF executable
 SUMATRA_PATH = r"C:\portableapps\sumatrapdf\sumatrapdf.exe"
 
-# Folder where PDFs are stored
-PDF_FOLDER = r"C:\Users\benoi\Downloads\ebay_manuals"
+# Folders where PDFs are stored
+PDF_FOLDERS = [
+    r"C:\Users\benoi\Downloads\ebay_manuals",
+    r"C:\Users\benoi\Downloads\manuals"
+]
 
 # Available printers
 PRINTERS = {
@@ -30,7 +34,7 @@ PRINT_SETTINGS = {
     "canon sx530 hs": [
         "color,1,169,duplexshort,fit,paper=letter,landscape",
     ],
-    "brother innov-is xp3 embrodery": [
+    "brother innov-is xp3 embroidery": [
         "color,1,212,duplex,fit,paper=letter",
     ],
     "humminbird helix 5": [
@@ -41,11 +45,20 @@ PRINT_SETTINGS = {
     "leica q3 43": [
         "color,1-264,duplex,fit,paper=letter",
     ],
+    "nikon d3500": [
+        "monochrome,1-36,duplex,fit,paper=letter",
+    ],
+    "bernina 570qe": [
+        "color,1-214,duplex,fit,paper=letter",
+    ],
     "canon eos m50 mark ii": [
         "color,609-709,duplex,fit,paper=letter",
     ],
+    "hp42s-elec-en_mod": [
+        "monochrome,3-164,duplex,fit,paper=letter",
+    ],
     "othermanual": [
-        "monochrome,1-5,simplex,fit,paper=letter"
+        "color,duplex,fit,paper=letter"
     ]
 }
 
@@ -59,13 +72,14 @@ def select_printer():
     return PRINTERS.get(choice, PRINTERS["1"])
 
 def find_pdf(partial_name):
-    """Finds a PDF file in the folder that contains the given string (case insensitive)."""
+    """Finds a PDF file in the specified folders that contains the given string (case insensitive)."""
     partial_name_lower = partial_name.lower()
 
-    matching_files = [
-        f for f in os.listdir(PDF_FOLDER)
-        if f.lower().endswith(".pdf") and partial_name_lower in f.lower()
-    ]
+    matching_files = []
+    for folder in PDF_FOLDERS:
+        for f in os.listdir(folder):
+            if f.lower().endswith(".pdf") and partial_name_lower in f.lower():
+                matching_files.append(os.path.join(folder, f))
 
     if not matching_files:
         print(f"No PDF found containing: {partial_name}")
@@ -74,7 +88,7 @@ def find_pdf(partial_name):
     if len(matching_files) > 1:
         print("Multiple matches found:")
         for idx, file in enumerate(matching_files, start=1):
-            print(f"{idx}. {file}")
+            print(f"{idx}. {os.path.basename(file)}")
         choice = input("Enter the number of the file you want to print: ").strip()
         if not choice.isdigit() or int(choice) < 1 or int(choice) > len(matching_files):
             print("Invalid choice.")
@@ -83,14 +97,30 @@ def find_pdf(partial_name):
 
     return matching_files[0]  # Return the only match
 
+def get_pdf_page_count(pdf_path):
+    """Returns the number of pages in the given PDF file."""
+    try:
+        with open(pdf_path, "rb") as f:
+            reader = PdfReader(f)
+            return len(reader.pages)
+    except Exception as e:
+        print(f"Error reading PDF: {e}")
+        return None
+
 def print_pdf(printer_name, partial_name):
     """Prints a PDF with predefined settings or user-defined page ranges."""
-    pdf_file = find_pdf(partial_name)
-    if not pdf_file:
+    pdf_path = find_pdf(partial_name)
+    if not pdf_path:
         return
 
-    pdf_path = os.path.join(PDF_FOLDER, pdf_file)
-    file_name_without_ext = os.path.splitext(pdf_file)[0].lower()
+    # Display the number of pages in the selected PDF
+    page_count = get_pdf_page_count(pdf_path)
+    if page_count:
+        print(f"The selected PDF has {page_count} pages.")
+    else:
+        print("Unable to determine the number of pages in the PDF.")
+
+    file_name_without_ext = os.path.splitext(os.path.basename(pdf_path))[0].lower()
     
     # Get custom page range input
     custom_range = input("Enter the page range to print (e.g., 40-45), or press Enter for default: ").strip()
@@ -120,7 +150,7 @@ def print_pdf(printer_name, partial_name):
             new_print_settings.append(",".join(modified_setting))
         print_settings = new_print_settings
     
-    print(f"Printing: {pdf_file} on {printer_name}...")
+    print(f"Printing: {os.path.basename(pdf_path)} on {printer_name}...")
 
     for setting in print_settings:
         print(f"Applying print settings: {setting}")
@@ -132,3 +162,4 @@ if __name__ == "__main__":
     selected_printer = select_printer()
     file_name = input("Enter part of the PDF filename: ").strip()
     print_pdf(selected_printer, file_name)
+
