@@ -1,52 +1,6 @@
-#!/usr/bin/env python
-import os
-import subprocess
-import time
-
-# Path to SumatraPDF executable
-SUMATRA_PATH = r"C:\portableapps\sumatrapdf\sumatrapdf.exe"
-
-# Folder where PDFs are stored
-PDF_FOLDER = r"C:\Users\benoi\Downloads\ebay_manuals"
-PDF_FOLDER = r"C:\Users\benoi\Downloads\manuals"
-
-# Available printers
-PRINTERS = {
-    "1": "Brother HL-L8360CDW [Wireless]",
-    "2": "Brother HL-L3290CDW [Wireless]",
-    "3": "Brother HL-L8360CDW [Landscape]"
-}
-
-# Predefined print settings for specific PDFs (keys stored in lowercase)
-PRINT_SETTINGS = {
-    "singer 3337": [
-        "color,1,simplex,fit,paper=letter",
-        "monochrome,2,duplex,fit,paper=letter",
-        "monochrome,3-34,duplex,fit,paper=letter",
-        "color,102,simplex,fit,paper=letter",
-    ],
-    "bernette b05": [
-        "color,1,82,duplex,fit,paper=letter",
-    ],
-    "canon sx530 hs": [
-        "color,1,169,duplexshort,fit,paper=letter,landscape",
-    ],
-    "brother innov-is xp3 embrodery": [
-        "color,1,212,duplex,fit,paper=letter",
-    ],
-    "humminbird helix 5": [
-        "color,1-190,duplex,fit,paper=letter",
-        "monochrome,191-214,duplex,fit,paper=letter",
-        "color,215,simplex,fit,paper=letter",
-    ],
-    "leica q3 43": [
-        "color,1-264,duplex,fit,paper=letter",
     ],
     "canon eos m50 mark ii": [
         "color,1-709,duplex,fit,paper=letter",
-    ],
-    "hp16c-oh-en_mod": [
-        "color,1-140,duplex,fit,paper=letter",
     ],
     "othermanual": [
         "monochrome,1-5,simplex,fit,paper=letter"
@@ -90,8 +44,25 @@ def find_pdf(partial_name):
 
     return matching_files[0]  # Return the only match
 
+def get_closest_matching_setting(file_name, custom_range):
+    """Finds the most relevant print setting for a given custom page range."""
+    settings = PRINT_SETTINGS.get(file_name, [])
+    custom_start, custom_end = map(int, custom_range.split("-"))
+
+    best_match = None
+    for setting in settings:
+        setting_parts = setting.split(",")
+        for part in setting_parts:
+            if "-" in part and all(p.isdigit() for p in part.split("-")):
+                start, end = map(int, part.split("-"))
+                if start <= custom_start <= end or start <= custom_end <= end:
+                    best_match = setting
+                    break
+
+    return best_match or settings[0] if settings else "color,fit,paper=letter"
+
 def print_pdf(printer_name, partial_name):
-    """Prints a PDF with predefined settings or default settings if not found."""
+    """Prints a PDF with predefined settings or a custom range if specified."""
     pdf_file = find_pdf(partial_name)
     if not pdf_file:
         return
@@ -99,13 +70,22 @@ def print_pdf(printer_name, partial_name):
     pdf_path = os.path.join(PDF_FOLDER, pdf_file)
     file_name_without_ext = os.path.splitext(pdf_file)[0].lower()
 
-    # Get print settings for this file or use default
-    print_settings = PRINT_SETTINGS.get(file_name_without_ext, ["color,fit,paper=letter"])
+    # Ask for custom page range
+    custom_range = input("Enter the page range to print (or press Enter to use defaults): ").strip()
+
+    if custom_range:
+        print_setting = get_closest_matching_setting(file_name_without_ext, custom_range)
+    else:
+        print_setting = PRINT_SETTINGS.get(file_name_without_ext, ["color,fit,paper=letter"])
 
     print(f"Printing: {pdf_file} on {printer_name}...")
 
+    if isinstance(print_setting, list):
+        print_settings = print_setting  # Use predefined settings
+    else:
+        print_settings = [print_setting]  # Use user-defined setting
+
     for setting in print_settings:
-        # Split settings to check for a page range
         setting_parts = setting.split(",")
         pages = None
         for part in setting_parts:
@@ -141,3 +121,4 @@ if __name__ == "__main__":
     selected_printer = select_printer()
     file_name = input("Enter part of the PDF filename: ").strip()
     print_pdf(selected_printer, file_name)
+
