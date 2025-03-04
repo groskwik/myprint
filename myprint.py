@@ -70,6 +70,12 @@ PRINT_SETTINGS = {
     "hp42s-elec-en": [
         "monochrome,3-164,duplex,fit,paper=letter",
     ],
+    "olympus tg-6": [
+        "monochrome,1-166,duplex,fit,paper=letter",
+    ],
+    "olympus tg-5": [
+        "monochrome,1-134,duplex,fit,paper=letter",
+    ],
     "hp42s-elec-en_mod": [
         "color,1,simplex,fit,paper=letter",
         "monochrome,3-164,duplex,fit,paper=letter",
@@ -77,12 +83,24 @@ PRINT_SETTINGS = {
     "gopro hero 9 black camera_mod": [
         "color,3-145,duplex,fit,paper=letter",
     ],
+    "baby Lock blsa3-embroidery": [
+        "color,3-191,duplex,fit,paper=letter",
+    ],
+    "baby Lock blsa3-sewing": [
+        "color,3-215,duplex,fit,paper=letter",
+    ],
+    "baby Lock blsa3-embroidery-design-guide": [
+        "color,3-191,duplex,fit,paper=letter",
+    ],
     "hp42s-easycourse": [
         "monochrome,3-388,duplex,fit,paper=letter",
     ],
     "hp42s-easycourse_mod": [
         "color,1,simplex,fit,paper=letter",
         "monochrome,3-388,duplex,fit,paper=letter",
+    ],
+    "tascam dp-03sd": [
+        "monochrome,1-76,duplex,fit,paper=letter",
     ],
     "nikon d3500": [
         "monochrome,1-36,duplex,fit,paper=letter",
@@ -92,6 +110,9 @@ PRINT_SETTINGS = {
     ],
     "nikon d6": [
         "monochrome,1-316,duplex,fit,paper=letter",
+    ],
+    "nikon d780": [
+        "monochrome,1-132,duplex,fit,paper=letter",
     ],
     "hp71-rpn": [
         "monochrome,1-12,duplex,fit,paper=letter",
@@ -218,23 +239,23 @@ def print_pdf(printer_name, partial_name):
         if page_range:
             start_page, end_page = map(int, page_range.split("-"))
             current_page = start_page
-
-            while current_page <= end_page:
-                batch_end = min(current_page + batch_size - 1, end_page)
-                batch_range = f"{current_page}-{batch_end}"
-                batch_setting = setting.replace(page_range, batch_range)
-
-                print(f"Printing pages {batch_range} with settings: {batch_setting}")
-                subprocess.run([SUMATRA_PATH, "-print-to", printer_name, "-print-settings", batch_setting, pdf_path], check=True)
-
-                current_page += batch_size
-                if current_page <= end_page:
-                    print(f"Waiting for {delay_between_batches // 60} minutes before next batch...")
-                    time.sleep(delay_between_batches)
         else:
-            # Print normally if no page range is specified
-            print(f"Applying print settings: {setting}")
-            subprocess.run([SUMATRA_PATH, "-print-to", printer_name, "-print-settings", setting, pdf_path], check=True)
+            start_page, end_page = 1, page_count
+            current_page = start_page
+            page_range = f'{start_page}-{end_page}'
+
+        while current_page <= end_page:
+            batch_end = min(current_page + batch_size - 1, end_page)
+            batch_range = f"{current_page}-{batch_end}"
+            batch_setting = setting.replace(page_range, batch_range)
+
+            print(f"Printing pages {batch_range} with settings: {batch_setting}")
+            subprocess.run([SUMATRA_PATH, "-print-to", printer_name, "-print-settings", batch_setting, pdf_path], check=True)
+
+            current_page += batch_size
+            if current_page <= end_page:
+                print(f"Waiting for {delay_between_batches // 60} minutes before next batch...")
+                time.sleep(delay_between_batches)
 
     print("Printing completed!")
 
