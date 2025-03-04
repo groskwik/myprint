@@ -1,4 +1,4 @@
-# Automated PDF Printing Script
+# MyPrint: Automated PDF Printing Script
 
 This Python script automates the process of searching for PDF files within specified directories and printing them using predefined or custom settings. It leverages the [SumatraPDF](https://www.sumatrapdfreader.org/docs/Command-line-arguments) application for command-line printing and the [PyPDF2](https://pypdf2.readthedocs.io/en/latest/) library to retrieve PDF metadata.
 
