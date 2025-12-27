@@ -5,16 +5,80 @@
     "monochrome,3-34,duplex,fit,paper=letter",
     "color,102,simplex,fit,paper=letter"
   ],
+  "hp42s-prog-en": [
+    "color,1,simplex,fit,paper=letter",
+    "monochrome,3-240,duplex,fit,paper=letter"
+  ],
   "singer 5500": [
     "color,1,simplex,fit,paper=letter",
     "monochrome,2,duplex,fit,paper=letter",
     "monochrome,3-64,duplex,fit,paper=letter"
   ],
+  "Roland GP100": [
+    "monochrome,1-92,duplex,fit,paper=letter"
+  ],
+  "Sony PXW-FS5": [
+    "monochrome,1-200,duplex,fit,paper=letter"
+  ],
   "ti-81": [
     "monochrome,1-193,duplex,fit,paper=letter"
   ],
+  "hp16c-easycourse": [
+    "monochrome,1-260,duplex,fit,paper=letter"
+  ], 
+  "nikon d3200": [
+    "monochrome,1-92,duplex,fit,paper=letter"
+  ],
+  "olympus e-m5 mark ii": [
+    "monochrome,1-186,duplex,fit,paper=letter"
+  ],
+  "Sony DSC RX10M4": [
+    "monochrome,1-40,duplex,fit,paper=letter"
+  ],
+  "TDK-DA-3826": [
+    "monochrome,1-28,duplex,fit,paper=letter"
+  ],
+  "Nikon Coolpix P100": [
+    "monochrome,1-216,duplex,fit,paper=letter"
+  ],
+  "Pfaff 260 Service Manual": [
+    "monochrome,1-90,duplex,fit,paper=letter"
+  ],
+  "Sony FX1000": [
+    "monochrome,1-152,duplex,fit,paper=letter"
+  ],
   "Sharp PC-1500A": [
     "monochrome,1-168,duplex,fit,paper=letter"
+  ],
+  "Brother LX3817": [
+    "monochrome,1-48,duplex,fit,paper=letter"
+  ],
+  "Nikon Coolpix W300": [
+    "monochrome,1-52,duplex,fit,paper=letter"
+  ],
+  "Yamaha AW16G": [
+    "monochrome,1-219,duplex,fit,paper=letter"
+  ],
+  "Tascam Model 24": [
+    "monochrome,1-172,duplex,fit,paper=letter"
+  ],
+    "Olympus E-M10 Mark IV": [
+    "monochrome,1-186,duplex,fit,paper=letter"
+  ],
+    "hp12c-prof-real-estate": [
+    "monochrome,1-364,duplex,fit,paper=letter"
+  ],
+    "Tascam 2488neo": [
+    "monochrome,1-364,duplex,fit,paper=letter"
+  ],
+    "Tascam 2488neo": [
+    "monochrome,1-124,duplex,fit,paper=letter"
+  ],
+    "Tandy Micro Computer Technical Reference Book2": [
+    "monochrome,1-122,duplex,fit,paper=letter"
+  ],
+  "Sony DVP-CX995V": [
+    "monochrome,1-96,duplex,fit,paper=letter"
   ],
   "yaesu vx7r": [
     "monochrome,1-111,duplex,fit,paper=letter"
@@ -39,6 +103,9 @@
   "kodak pixpro az528": [
     "color,1,simplex,fit,paper=letter,landscape",
     "monochrome,3-124,duplexshort,fit,paper=letter,landscape"
+  ],
+  "kodak pixpro az421": [
+    "color,1-107,duplexshort,fit,paper=letter,landscape"
   ],
   "hp27s19b-tech-en": [
     "color,1,simplex,fit,paper=letter",
@@ -77,6 +144,9 @@
   ],
   "Canon Elph 190 IS": [
     "color,1-143,duplexshort,fit,paper=letter,landscape"
+  ],
+    "leica M EV1": [
+    "color,1-164,duplex,fit,paper=letter"
   ],
   "red dsmc2 dragon-x": [
     "color,1-236,duplex,fit,paper=letter"
@@ -142,14 +212,21 @@
   ],
   "pioneer dvl-909": [
     "monochrome,1,simplex,fit,paper=letter",
-    "monochrome,3,simplex,fit,paper=letter",
-    "monochrome,140,duplex,fit,paper=letter"
+    "monochrome,2,simplex,fit,paper=letter",
+    "monochrome,3-140,duplex,fit,paper=letter"
   ],
   "boss br-1200cd": [
     "monochrome,1-364,duplex,fit,paper=letter"
   ],
   "tektronix 475": [
-    "monochrome,1-240,duplex,fit,paper=letter"
+      "monochrome,1-30,duplex,fit,paper=letter",
+      "monochrome,31-60,duplex,fit,paper=letter",
+      "monochrome,61-90,duplex,fit,paper=letter",
+      "monochrome,91-120,duplex,fit,paper=letter",
+      "monochrome,121-150,duplex,fit,paper=letter",
+      "monochrome,151-180,duplex,fit,paper=letter",
+      "monochrome,181-210,duplex,fit,paper=letter",
+      "monochrome,211-240,duplex,fit,paper=letter"
   ],
   "panasonic gh2": [
     "monochrome,1-208,duplex,fit,paper=letter"
@@ -157,8 +234,17 @@
   "olympus om-1": [
     "monochrome,1-342,duplex,fit,paper=letter"
   ],
-  "yaesu ft-991 transceiver": [
-    "monochrome,1-158,duplex,fit,paper=letter"
+  "Nikon CoolPix P900": [
+    "monochrome,1-342,duplex,fit,paper=letter"
+  ],
+  "yaesu ft-991A transceiver": [
+      "monochrome,1-10,duplex,fit,paper=letter",
+      "color,11-14,duplex,fit,paper=letter",
+      "monochrome,15-22,duplex,fit,paper=letter",
+      "color,23-26,duplex,fit,paper=letter",
+      "monochrome,27-36,duplex,fit,paper=letter",
+      "color,37-148,duplex,fit,paper=letter",
+    "monochrome,149-158,duplex,fit,paper=letter"
   ],
   "nikon d800": [
     "monochrome,1-472,duplex,fit,paper=letter"
@@ -504,6 +590,15 @@
   "nikon d780": [
     "monochrome,1-132,duplex,fit,paper=letter"
   ],
+    "Olympus E-M10 Mark II": [
+    "monochrome,1-171,duplex,fit,paper=letter"
+  ],
+    "Kubota B2301 B2601": [
+    "monochrome,1-95,duplex,fit,paper=letter"
+  ],
+  "Olympus E-M10": [
+    "monochrome,1-161,duplex,fit,paper=letter"
+  ],
   "hp71-rpn": [
     "monochrome,1-12,duplex,fit,paper=letter"
   ],
@@ -512,6 +607,9 @@
   ],
   "tandy Color Computer 3 Service": [
     "monochrome,1-129,duplex,fit,paper=letter"
+  ],
+  "panasonic lx7": [
+    "color,1-226,duplex,fit,paper=letter"
   ],
   "canon eos 6d": [
     "color,1-404,duplex,fit,paper=letter"
