@@ -25,7 +25,7 @@
   ],
   "hp16c-easycourse": [
     "monochrome,1-260,duplex,fit,paper=letter"
-  ], 
+  ],
   "nikon d3200": [
     "monochrome,1-92,duplex,fit,paper=letter"
   ],
@@ -62,19 +62,16 @@
   "Tascam Model 24": [
     "monochrome,1-172,duplex,fit,paper=letter"
   ],
-    "Olympus E-M10 Mark IV": [
+  "Olympus E-M10 Mark IV": [
     "monochrome,1-186,duplex,fit,paper=letter"
   ],
-    "hp12c-prof-real-estate": [
+  "hp12c-prof-real-estate": [
     "monochrome,1-364,duplex,fit,paper=letter"
   ],
-    "Tascam 2488neo": [
-    "monochrome,1-364,duplex,fit,paper=letter"
-  ],
-    "Tascam 2488neo": [
+  "Tascam 2488neo": [
     "monochrome,1-124,duplex,fit,paper=letter"
   ],
-    "Tandy Micro Computer Technical Reference Book2": [
+  "Tandy Micro Computer Technical Reference Book2": [
     "monochrome,1-122,duplex,fit,paper=letter"
   ],
   "Sony DVP-CX995V": [
@@ -145,7 +142,7 @@
   "Canon Elph 190 IS": [
     "color,1-143,duplexshort,fit,paper=letter,landscape"
   ],
-    "leica M EV1": [
+  "leica M EV1": [
     "color,1-164,duplex,fit,paper=letter"
   ],
   "red dsmc2 dragon-x": [
@@ -161,9 +158,7 @@
     "color,1-300,duplex,fit,paper=letter"
   ],
   "singer 2263": [
-    "color,1,simplex,fit,paper=letter",
-    "monochrome,2,duplex,fit,paper=letter",
-    "monochrome,3-62,duplex,fit,paper=letter"
+    "color,1-62,duplexshort,fit,paper=letter,landscape"
   ],
   "bernette b05": [
     "color,1-82,duplex,fit,paper=letter"
@@ -202,7 +197,7 @@
     "monochrome,3-137,duplex,fit,paper=letter",
     "color,138,simplex,fit,paper=letter"
   ],
-  "canon powershot sx40hs": [
+  "canon powershot sx40 hs": [
     "color,1,simplex,fit,paper=letter",
     "monochrome,2,simplex,fit,paper=letter",
     "monochrome,3-219,duplex,fit,paper=letter"
@@ -219,14 +214,14 @@
     "monochrome,1-364,duplex,fit,paper=letter"
   ],
   "tektronix 475": [
-      "monochrome,1-30,duplex,fit,paper=letter",
-      "monochrome,31-60,duplex,fit,paper=letter",
-      "monochrome,61-90,duplex,fit,paper=letter",
-      "monochrome,91-120,duplex,fit,paper=letter",
-      "monochrome,121-150,duplex,fit,paper=letter",
-      "monochrome,151-180,duplex,fit,paper=letter",
-      "monochrome,181-210,duplex,fit,paper=letter",
-      "monochrome,211-240,duplex,fit,paper=letter"
+    "monochrome,1-30,duplex,fit,paper=letter",
+    "monochrome,31-60,duplex,fit,paper=letter",
+    "monochrome,61-90,duplex,fit,paper=letter",
+    "monochrome,91-120,duplex,fit,paper=letter",
+    "monochrome,121-150,duplex,fit,paper=letter",
+    "monochrome,151-180,duplex,fit,paper=letter",
+    "monochrome,181-210,duplex,fit,paper=letter",
+    "monochrome,211-240,duplex,fit,paper=letter"
   ],
   "panasonic gh2": [
     "monochrome,1-208,duplex,fit,paper=letter"
@@ -238,12 +233,12 @@
     "monochrome,1-342,duplex,fit,paper=letter"
   ],
   "yaesu ft-991A transceiver": [
-      "monochrome,1-10,duplex,fit,paper=letter",
-      "color,11-14,duplex,fit,paper=letter",
-      "monochrome,15-22,duplex,fit,paper=letter",
-      "color,23-26,duplex,fit,paper=letter",
-      "monochrome,27-36,duplex,fit,paper=letter",
-      "color,37-148,duplex,fit,paper=letter",
+    "monochrome,1-10,duplex,fit,paper=letter",
+    "color,11-14,duplex,fit,paper=letter",
+    "monochrome,15-22,duplex,fit,paper=letter",
+    "color,23-26,duplex,fit,paper=letter",
+    "monochrome,27-36,duplex,fit,paper=letter",
+    "color,37-148,duplex,fit,paper=letter",
     "monochrome,149-158,duplex,fit,paper=letter"
   ],
   "nikon d800": [
@@ -348,7 +343,7 @@
     "color,1-112,duplex,fit,paper=letter"
   ],
   "humminbird helix 5": [
-    "color,1-215,duplex,fit,paper=letter"
+    "color,1-216,duplex,fit,paper=letter"
   ],
   "ricoh grii": [
     "color,1-184,duplex,fit,paper=letter"
@@ -393,7 +388,7 @@
     "color,1-93,duplex,fit,paper=letter"
   ],
   "nikon d3100 reference": [
-    "monochrome,1-214,duplex,fit,paper=letter"
+    "monochrome,1-224,duplex,fit,paper=letter"
   ],
   "jvc gy-hm200u": [
     "monochrome,1-184,duplex,fit,paper=letter"
@@ -590,10 +585,10 @@
   "nikon d780": [
     "monochrome,1-132,duplex,fit,paper=letter"
   ],
-    "Olympus E-M10 Mark II": [
+  "Olympus E-M10 Mark II": [
     "monochrome,1-171,duplex,fit,paper=letter"
   ],
-    "Kubota B2301 B2601": [
+  "Kubota B2301 B2601": [
     "monochrome,1-95,duplex,fit,paper=letter"
   ],
   "Olympus E-M10": [
@@ -624,16 +619,14 @@
     "color,1-116,duplex,fit,paper=letter"
   ],
   "dm41x_user_manual": [
-    "color,3-44,duplex,fit,paper=letter"
+    "color,1-44,duplex,fit,paper=letter"
   ],
   "tandy 100 hidden power": [
     "monochrome,2,simplex,fit,paper=letter",
     "monochrome,3-257,duplex,fit,paper=letter"
   ],
   "canon powershot sx30 is": [
-    "color,1,simplex,fit,paper=letter",
-    "monochrome,2,simplex,fit,paper=letter",
-    "monochrome,3-196,duplex,fit,paper=letter"
+    "monochrome,1-196,duplex,fit,paper=letter"
   ],
   "tandy 100 reference": [
     "color,1,simplex,fit,paper=letter",
@@ -642,6 +635,166 @@
   ],
   "brother ce8080 ce8080prw": [
     "color,1-72,duplex,fit,paper=letter"
+  ],
+  "leica sl3": [
+    "color,1-341,duplexshort,fit,paper=letter,landscape"
+  ],
+  "tesla cybertruck": [
+    "color,1-322,duplex,fit,paper=letter"
+  ],
+  "sony fdr-ax100": [
+    "monochrome,1-56,duplex,fit,paper=letter"
+  ],
+  "sony dsc-h400": [
+    "monochrome,1-80,duplex,fit,paper=letter"
+  ],
+  "pentax kx": [
+    "monochrome,1-324,duplex,fit,paper=letter"
+  ],
+  "tandy 102": [
+    "color,1,simplex,fit,paper=letter",
+    "monochrome,2,simplex,fit,paper=letter",
+    "monochrome,3-148,duplex,fit,paper=letter"
+  ],
+  "baby lock solaris 3 complete manual set sewing embroidery emboidery design": [
+    "color,1-603,duplex,fit,paper=letter"
+  ],
+  "nikon d500": [
+    "monochrome,1-428,duplex,fit,paper=letter"
+  ],
+  "atari 400 service manual": [
+    "monochrome,1-129,duplex,fit,paper=letter"
+  ],
+  "nikon d3s": [
+    "monochrome,1-460,duplex,fit,paper=letter"
+  ],
+  "leica m11p": [
+    "color,1-185,duplexshort,fit,paper=letter,landscape"
+  ],
+  "leica m11": [
+    "color,1-177,duplexshort,fit,paper=letter,landscape"
+  ],
+  "icom ic-706mkiig service": [
+    "color,1-86,duplex,fit,paper=letter"
+  ],
+  "nikon z6 ii z7 ii": [
+    "color,1-879,duplex,fit,paper=letter"
+  ],
+  "ricoh grii ": [
+    "monochrome,1-184,duplex,fit,paper=letter"
+  ],
+  "icom ic-746pro": [
+    "color,1-116,duplex,fit,paper=letter"
+  ],
+  "yamaha dgx-640": [
+    "monochrome,1-120,duplex,fit,paper=letter"
+  ],
+  "kenwood ts-890s_idm": [
+    "color,1-96,duplex,fit,paper=letter"
+  ],
+  "ppcrom-um": [
+    "monochrome,1-504,duplex,fit,paper=letter"
+  ],
+  "kubota l2550": [
+    "monochrome,1-68,duplex,fit,paper=letter"
+  ],
+  "pentax k-70": [
+    "monochrome,1-156,duplexshort,fit,paper=letter,landscape"
+  ],
+  "singer 4423": [
+    "color,1-33,duplexshort,fit,paper=letter,landscape"
+  ],
+  "rolleiflex 3.5f": [
+    "color,1-35,duplexshort,fit,paper=letter,landscape"
+  ],
+  "canon powershot sx620 hs": [
+    "color,1-157,duplexshort,fit,paper=letter,landscape"
+  ],
+  "hp41-pac-advantage-en_letter": [
+    "color,1-156,duplexshort,fit,paper=letter,landscape"
+  ],
+  "hp 75 surveying pac owner's manual": [
+    "color,1-124,duplexshort,fit,paper=letter,landscape"
+  ],
+  "owners manual for gopro hero 13 black camera - half-letter size": [
+    "color,1-148,duplexshort,fit,paper=letter,landscape"
+  ],
+  "hp32s-engineering-en": [
+    "color,1,simplex,fit,paper=letter",
+    "monochrome,2,simplex,fit,paper=letter",
+    "monochrome,3-118,duplex,fit,paper=letter"
+  ],
+  "yaesu ft-920": [
+    "monochrome,1-121,duplex,fit,paper=letter"
+  ],
+  "olympus e-m10 mark iii": [
+    "monochrome,1-173,duplex,fit,paper=letter"
+  ],
+  "icom ic-706mk2 instruction": [
+    "monochrome,1-64,duplex,fit,paper=letter"
+  ],
+  "icom ic-706mkiig instruction": [
+    "monochrome,1-75,duplex,fit,paper=letter"
+  ],
+  "hp41-inside": [
+    "color,1,simplex,fit,paper=letter",
+    "monochrome,2,simplex,fit,paper=letter",
+    "monochrome,3-276,duplex,fit,paper=letter"
+  ],
+  "olympus e-m1 mark ii": [
+    "monochrome,1-219,duplex,fit,paper=letter"
+  ],
+  "kodak pixpro fz43": [
+    "color,1-86,duplexshort,fit,paper=letter,landscape"
+  ],
+  "kubota b2710 b2910 b7800": [
+    "monochrome,1-75,duplex,fit,paper=letter"
+  ],
+  "hp85": [
+    "color,1,simplex,fit,paper=letter",
+    "monochrome,2,simplex,fit,paper=letter",
+    "monochrome,3-343,duplex,fit,paper=letter"
+  ],
+  "nikon d7000": [
+    "monochrome,1-348,duplex,fit,paper=letter"
+  ],
+  "rolleiflex 2.8": [
+    "color,1-16,duplexshort,fit,paper=letter,landscape"
+  ],
+  "sony hvr-s270": [
+    "monochrome,1-136,duplex,fit,paper=letter"
+  ],
+  "canon powershot g7x mark ii": [
+    "color,1-225,duplexshort,fit,paper=letter,landscape"
+  ],
+  "husqvarna viking emerald 116 118 122 manual - half-letter size": [
+    "color,1-24,duplexshort,fit,paper=letter,landscape"
+  ],
+  "icom ic-7300mk2 basic": [
+    "color,1,simplex,fit,paper=letter",
+    "monochrome,2,simplex,fit,paper=letter",
+    "monochrome,3-84,duplex,fit,paper=letter"
+  ],
+  "hp41-pac-realestate-en_letter": [
+    "color,1-86,duplexshort,fit,paper=letter,landscape"
+  ],
+  "operation manual for humminbird helix 5 and 7 - half-letter size": [
+    "color,1-108,duplexshort,fit,paper=letter,landscape"
+  ],
+  "hp-15c collector's edition calculator advanced functions manual half letter": [
+    "color,1-114,duplexshort,fit,paper=letter,landscape"
+  ],
+  "canon powershot sx500 is": [
+    "color,1,simplex,fit,paper=letter",
+    "monochrome,2,simplex,fit,paper=letter",
+    "monochrome,3-228,duplex,fit,paper=letter"
+  ],
+  "canon powershot g12": [
+    "color,1,simplex,fit,paper=letter",
+    "monochrome,2,simplex,fit,paper=letter",
+    "monochrome,3-214,duplex,fit,paper=letter"
+  ],
+  "gopro hero 6 black": [
+    "color,1-98,duplex,fit,paper=letter"
   ]
 }
-
